@@ -1,7 +1,7 @@
 # FastAPI class inherits from Starlette which is an ASGI framework for building async web services in Python
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
-import os
+# import os
 from pathlib import Path
 
 # Create an instance of the FastAPI class
@@ -28,7 +28,7 @@ async def health_check():
     return {"status": "healthy", "message": "TLDW is running"}
 
 # Define a new GET endpoint for /items/foo
-@app.get("/items/foo")
+@app.get("/api/items/foo")
 async def get_items_foo():
     # Return a JSON response with item information
     return {"item_id": "foo", "item_name": "Foo Item", "description": "This is the foo item"} 
