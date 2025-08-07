@@ -1,6 +1,7 @@
 # FastAPI class inherits from Starlette which is an ASGI framework for building async web services in Python
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from typing import Optional
 from datetime import datetime
 # import os
@@ -29,17 +30,7 @@ MOCK_DOCUMENTS = {
     }
 }
 
-# Path operation decorator
-# Path is also called an endpoint or route
-
-# Operation refers to one of the http methods eg get, post, put, delete
-@app.get("/")
-# Path operation function
-async def root():
-    """Serve the main index.html file"""
-    index_path = FRONTEND_DIR / "index.html"
-    return FileResponse(str(index_path))
-
+# API routes - these must be defined BEFORE the static mount to take precedence
 @app.get("/api/health")
 async def health_check():
     """Health check endpoint"""
@@ -65,4 +56,12 @@ async def get_document(document_id: int):
     if document_id not in MOCK_DOCUMENTS:
         raise HTTPException(status_code=404, detail="Document not found")
     
-    return MOCK_DOCUMENTS[document_id] 
+    return MOCK_DOCUMENTS[document_id]
+
+# Chrome DevTools configuration - just getting rid of the 404 error when devtools is opened
+@app.get("/.well-known/appspecific/com.chrome.devtools.json")
+async def chrome_devtools():
+    return {"message": "No custom devtools configuration"}
+
+# Mount the entire frontend directory as static files AFTER API routes
+app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend") 
