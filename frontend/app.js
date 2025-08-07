@@ -26,8 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
             documentContent.textContent = document.content;
             documentUpdated.textContent = `Last updated: ${document.updated_at}`;
             
-            // Show the display area
-            documentDisplay.style.display = 'block';
+            // Show the display area using Tailwind classes
+            documentDisplay.classList.remove('hidden');
+            documentDisplay.classList.add('block');
             
             // Reset button
             fetchBtn.textContent = 'Fetch Document 44';
@@ -40,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
             documentTitle.textContent = 'Error';
             documentContent.textContent = `Failed to fetch document: ${error.message}`;
             documentUpdated.textContent = '';
-            documentDisplay.style.display = 'block';
+            documentDisplay.classList.remove('hidden');
+            documentDisplay.classList.add('block');
             
             // Reset button
             fetchBtn.textContent = 'Fetch Document 44';

@@ -4,25 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Too Long Didn't Write.</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Hello World</h1>
-    <p><a href="/docs">/docs</a> FastAPI Swagger Docs</p>
-    <p><a href="/api/health">/api/health</a></p>
-    <p><a href="/api/items/foo">/api/items/foo</a></p>
+<body class="font-sans max-w-6xl mx-auto p-5 leading-relaxed text-gray-800">
+    <h1 class="text-3xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2.5 mb-6">Hello World</h1>
     
-    <h2>Document API Test Links</h2>
-    <p><a href="/api/documents/1">/api/documents/1</a> - Getting Started Guide</p>
-    <p><a href="/api/documents/44">/api/documents/44</a> - Sample Document</p>
-    <p><a href="/api/documents/999">/api/documents/999</a> - 404 Error Test</p> Returns 404
+    <div class="space-y-2 mb-8">
+        <p><a href="/docs" class="text-blue-500 hover:underline">/docs</a> FastAPI Swagger Docs</p>
+        <p><a href="/api/health" class="text-blue-500 hover:underline">/api/health</a></p>
+        <p><a href="/api/items/foo" class="text-blue-500 hover:underline">/api/items/foo</a></p>
+    </div>
+    
+    <h2 class="text-2xl font-semibold text-gray-700 mt-8 mb-4">Document API Test Links</h2>
+    <div class="space-y-2 mb-8">
+        <p><a href="/api/documents/1" class="text-blue-500 hover:underline">/api/documents/1</a> - Getting Started Guide</p>
+        <p><a href="/api/documents/44" class="text-blue-500 hover:underline">/api/documents/44</a> - Sample Document</p>
+        <p><a href="/api/documents/999" class="text-blue-500 hover:underline">/api/documents/999</a> - 404 Error Test</p> Returns 404
+    </div>
 
-    <h2>Interactive Document Fetcher</h2>
-    <button id="fetchDocumentBtn">Fetch Document 44</button>
-    <div id="documentDisplay" class="document-display">
-        <h3 id="documentTitle"></h3>
-        <pre id="documentContent" class="document-content"></pre>
-        <p id="documentUpdated"></p>
+    <h2 class="text-2xl font-semibold text-gray-700 mt-8 mb-4">Interactive Document Fetcher</h2>
+    <button id="fetchDocumentBtn" class="bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white border-none py-2.5 px-5 rounded cursor-pointer text-base transition-colors duration-300">
+        Fetch Document 44
+    </button>
+    
+    <div id="documentDisplay" class="mt-5 p-4 border border-gray-300 rounded bg-gray-50 hidden">
+        <h3 id="documentTitle" class="text-xl font-semibold mb-3"></h3>
+        <pre id="documentContent" class="whitespace-pre-wrap bg-white p-3 rounded border border-gray-200 overflow-x-auto text-sm"></pre>
+        <p id="documentUpdated" class="text-sm text-gray-600 mt-3"></p>
     </div>
 
     <script src="app.js"></script>
