@@ -76,6 +76,12 @@ By providing best-in-class templates for common technical writing scenarios (e.g
 - [ ] Copy content from any version to create a new document or overwrite current
 - [ ] Version browsing accessible via command palette or shortcut (e.g., `Cmd/Ctrl + Shift + V`)
 
+#### 📱 Offline Support
+- [ ] Display "Offline" message when no internet connection
+- [ ] Continue writing and editing while offline
+- [ ] Automatically save to server when connection is restored
+- [ ] Simple offline indicator in UI
+
 
 
 ## 3. User Flow
